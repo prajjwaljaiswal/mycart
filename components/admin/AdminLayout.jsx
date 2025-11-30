@@ -5,13 +5,17 @@ import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 import AdminNavbar from "./AdminNavbar"
 import AdminSidebar from "./AdminSidebar"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
 const AdminLayout = ({ children }) => {
     const router = useRouter()
+    const pathname = usePathname()
     const [isAdmin, setIsAdmin] = useState(false)
     const [adminInfo, setAdminInfo] = useState(null)
     const [loading, setLoading] = useState(true)
+
+    // Skip auth check if we're on the login page
+    const isLoginPage = pathname === '/admin/login'
 
     const fetchAdminStatus = async () => {
         try {
@@ -23,20 +27,34 @@ const AdminLayout = ({ children }) => {
                 setAdminInfo(data.admin)
             } else {
                 setIsAdmin(false)
-                router.push('/admin/login')
+                if (!isLoginPage) {
+                    router.push('/admin/login')
+                }
             }
         } catch (error) {
             console.error('Error checking admin status:', error)
             setIsAdmin(false)
-            router.push('/admin/login')
+            if (!isLoginPage) {
+                router.push('/admin/login')
+            }
         } finally {
             setLoading(false)
         }
     }
 
     useEffect(() => {
+        if (isLoginPage) {
+            // On login page, skip auth check and just render children
+            setLoading(false)
+            return
+        }
         fetchAdminStatus()
-    }, [router])
+    }, [router, isLoginPage])
+
+    // If we're on the login page, render children directly without layout
+    if (isLoginPage) {
+        return <>{children}</>
+    }
 
     if (loading) {
         return <Loading />
