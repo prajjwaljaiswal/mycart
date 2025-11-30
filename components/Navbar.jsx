@@ -25,7 +25,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between max-w-7xl mx-auto py-4  transition-all">
 
                     <Link href="/" className="relative text-4xl font-semibold text-slate-700">
-                        <span className="text-green-600">My</span>Cart
+                        <span className="text-green-600">my</span>cart
                     </Link>
 
                     {/* Desktop Menu */}

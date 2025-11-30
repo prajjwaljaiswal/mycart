@@ -53,7 +53,7 @@ export default function AdminLogin() {
             <div className="max-w-md w-full">
                 <div className="mb-8 text-center">
                     <Link href="/" className="relative inline-block text-4xl font-semibold text-slate-700">
-                        <span className="text-green-600">go</span>cart
+                        <span className="text-green-600">my</span>cart
                         <span className="text-green-600 text-5xl leading-0">.</span>
                         <p className="absolute text-xs font-semibold -top-1 -right-13 px-3 p-0.5 rounded-full flex items-center gap-2 text-white bg-green-500">
                             Admin
@@ -75,7 +75,7 @@ export default function AdminLogin() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                                placeholder="admin@gocart.com"
+                                placeholder="admin@mycart.com"
                             />
                         </div>
                         <div>
