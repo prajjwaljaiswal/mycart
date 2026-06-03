@@ -1,0 +1,19 @@
+/* Tailwind CSS classes for consistent styling and responsive design */
+.product-list {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4;
+}
+.product-card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden;
+}
+.product-image {
+  @apply w-full h-48 object-cover;
+}
+.product-details {
+  @apply p-4;
+}
+.product-name {
+  @apply text-xl font-semibold truncate;
+}
+.product-price {
+  @apply text-gray-700 font-bold;
+}
