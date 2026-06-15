@@ -1,12 +1,13 @@
 import React from 'react';
+import ProductList from '../components/ProductList/ProductList';
 
-const ProductListingPage = () => {
+const ProductsPage: React.FC = () => {
   return (
     <div>
-      <h1>Product Listing</h1>
-      <p>Welcome to the product listing page. Products will be displayed here.</p>
+      <h1>Products</h1>
+      <ProductList />
     </div>
   );
 };
 
-export default ProductListingPage;
+export default ProductsPage;
