@@ -2,7 +2,7 @@
 import Counter from "@/components/Counter";
 import OrderSummary from "@/components/OrderSummary";
 import PageTitle from "@/components/PageTitle";
-import { deleteItemFromCart } from "@/lib/features/cart/cartSlice";
+import { deleteItemFromCart, incrementItemQuantity, decrementItemQuantity } from "@/lib/features/cart/cartSlice";
 import { Trash2Icon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -39,6 +39,14 @@ export default function Cart() {
     const handleDeleteItemFromCart = (productId) => {
         dispatch(deleteItemFromCart({ productId }))
     }
+
+    const handleIncreaseQuantity = (productId) => {
+        dispatch(incrementItemQuantity(productId));
+    };
+
+    const handleDecreaseQuantity = (productId) => {
+        dispatch(decrementItemQuantity(productId));
+    };
 
     useEffect(() => {
         if (products.length > 0) {
@@ -86,6 +94,8 @@ export default function Cart() {
                                             <button onClick={() => handleDeleteItemFromCart(item.id)} className=" text-red-500 hover:bg-red-50 p-2.5 rounded-full active:scale-95 transition-all">
                                                 <Trash2Icon size={18} />
                                             </button>
+                                            <button onClick={() => handleDecreaseQuantity(item.id)} className="text-blue-500 ml-2 hover:bg-blue-50 p-2.5 rounded-full active:scale-95 transition-all">-</button>
+                                            <button onClick={() => handleIncreaseQuantity(item.id)} className="text-blue-500 ml-2 hover:bg-blue-50 p-2.5 rounded-full active:scale-95 transition-all">+</button>
                                         </td>
                                     </tr>
                                 ))
