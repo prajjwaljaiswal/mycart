@@ -1,5 +1,78 @@
 @import "tailwindcss";
 
+/* Global styles for MyCart */
+
+:root {
+  --color-text-light: #000000;
+  --color-text-dark: #ffffff;
+  --color-background-light: #ffffff;
+  --color-background-dark: #121212;
+  --color-primary: #6200ea;
+  --color-secondary: #03dac6;
+  --color-error: #b00020;
+  --color-border-light: #e0e0e0;
+  --color-border-dark: #1f1f1f;
+}
+
+body {
+  color: var(--color-text-light);
+  background-color: var(--color-background-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  color: var(--color-text-dark);
+  background-color: var(--color-background-dark);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 1200px;
+}
+
+.header, .footer {
+  background-color: var(--color-background-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+body.dark-mode .header, body.dark-mode .footer {
+  background-color: var(--color-background-dark);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-secondary);
+}
+
+body.dark-mode .button {
+  color: var(--color-text-dark);
+}
+
+.card {
+  background-color: var(--color-background-light);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+body.dark-mode .card {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-border-dark);
+}
+
 @layer components {
     @keyframes marqueeScroll {
         0% {
